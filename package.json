@@ -2,12 +2,12 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
+    "build": "node api.js && cross-env NODE_ENV=production webpack",
     "deploy": "ghpages git@github.com:supermedium/beatsaver-viewer.git -p .ghpages && rm -rf .ghpages",
     "lint": "semistandard -v | snazzy",
     "lint:fix": "semistandard --fix",
     "predeploy": "npm run build && shx mkdir -p .ghpages && cp -r index.html assets build vendor .ghpages",
-    "start": "webpack-dev-server --host 0.0.0.0 --progress --colors --hot --inline --port 9999"
+    "start": "node api.js && webpack-dev-server --host 0.0.0.0 --progress --colors --hot --inline --port 9999"
   },
   "dependencies": {
     "aframe-aabb-collider-component": "^3.1.0",
